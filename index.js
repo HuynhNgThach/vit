@@ -105,7 +105,7 @@ async function conitunousGetMessage(link) {
     if(eventMessages) {
       console.log(eventMessages)
       eventMessages.forEach(mess => {
-      if(mess.resource) {
+      if(mess.resource && mess.resourceType==='NewMessage') {
         if(!oldMessage.includes(mess.resource.clientmessageid)) {
           if(mess.resource.content && mess.resource.imdisplayname && from.includes(mess.resource.imdisplayname)) {
             // client.channels.cache.get(textChannelId).send(mess);
