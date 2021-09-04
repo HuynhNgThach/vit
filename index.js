@@ -28,7 +28,12 @@ client.on('ready', client => {
     }
   })
   client.channels.cache.get(textChannelId).send(':duck: Vịt đã online!');
-  conitunousGetMessage(config.url)
+  try {
+    conitunousGetMessage(config.url)
+  } catch (error) {
+    console.log("ERROR", error)
+  }
+  
   
 })
 client.on('error', client => {
