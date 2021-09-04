@@ -135,7 +135,7 @@ async function conitunousGetMessage(link) {
 function sendMessage(channelId, mess) {
   client.channels.cache.get(channelId).send(mess);    
 }
-client.login(process.env.bot_token);
+client.login(process.env.bot_token || 'ODgxOTEyMjc3NzY5NTUyMDAz.YSzu0A.xQISDzpiCAqqTXlm3_1W1fxiSaI');
 
 
 
