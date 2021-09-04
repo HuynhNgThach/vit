@@ -3,7 +3,7 @@ const axios = require('axios').default;
 const cheerio = require('cheerio');
 const from = ['Phương. Nguyễn Ngọc Quỳnh (2)', 'Thạch. Huỳnh Ngọc (3)','Phụng. Tô Hoàng']
 const config = {
-    authentication: 'skypetoken=eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwMiIsIng1dCI6IjNNSnZRYzhrWVNLd1hqbEIySmx6NTRQVzNBYyIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzA0NTk1NDgsImV4cCI6MTYzMDU0NTk0Mywic2t5cGVpZCI6Im9yZ2lkOmU5MTUyN2M5LTI0ODEtNDVlYy05NzJjLTljZWIyMjI2MzU3ZCIsInNjcCI6NzgwLCJjc2kiOiIxNjMwNDU5MjQzIiwidGlkIjoiN2MxMTJhNmUtMTBlMi00ZTA5LWFmYzQtMmUzN2JjNjBkODIxIiwicmduIjoiYXBhYyJ9.w-d5IdOkWbT-Z0MXOqnJh2HdqX6oDLpkFWKDtavWxxPIc5QgZNl5gzuU1N1uNH8wpjtV3Xq8phRvi0skFLUCpmZTFofZ6x0SU-5rTUZp8kSW30peP_Mqntvo2KdONnqRI0s7bM9ZqLcVkFVJN6BThOAf6quSDaD5_g7CyUrpR8Uv64RXUU5GZuwSCvYMF2yNdJgH9xHu1UsKw_1whIQQ9Iv5UtpEKUQILaOvvRN2tExRP76Vjg8d8H7LjG8Qi4AoWom30x6OpOT70s_wuBoFHqCBl06oejAjG4nd4WSs1n4o_NtDR102Z0QgELWld_72yleWer_kDNdpRYVDC6rf7A',
+    authentication: process.env.msteam_token,
     url: `https://southeastasia-prod-2.notifications.teams.microsoft.com/users/8:orgid:e91527c9-2481-45ec-972c-9ceb2226357d/endpoints/88001bde-ee83-4214-aaab-6cbf312993ee/events/poll?cursor=${Math.round(Date.now()/1000)}&sca=0`
 }
 
@@ -13,7 +13,6 @@ const options = {
     }
 }
 
-const configFile = require('./config.json')
 
 
 const { Client, Intents } = require('discord.js');
@@ -131,7 +130,7 @@ async function conitunousGetMessage(link) {
 function sendMessage(channelId, mess) {
   client.channels.cache.get(channelId).send(mess);    
 }
-client.login(configFile.BOT_TOKEN);
+client.login(process.env.bot_token);
 
 
 
