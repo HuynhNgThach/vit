@@ -82,8 +82,8 @@ client.on("message",async (message) => {
       .setColor('#e26900')
       .setTitle(':duck: Now playing:')
       .setDescription(guildQueue.nowPlaying.name)
-      .addField(`${ProgressBar.prettier}`, true)
-      .setFooter('vit©2021');
+      .addField('\u200b', `${ProgressBar.prettier}`, true)
+      .setFooter('vit © 2021');
       client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       break
     case 'queue': 
@@ -113,7 +113,7 @@ client.player.on('songAdd',  (queue, song) => {
       .setTitle(':duck: Added to farm ')
       .setDescription(song.name + ` | ( ${song.duration} )`)
       .setImage(song.thumbnail)
-      .setFooter('vit©2021');
+      .setFooter('vit © 2021');
       client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
     } catch (error) {
       console.log("ERROR | ",error)
