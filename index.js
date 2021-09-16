@@ -113,6 +113,11 @@ client.on("message",async (message) => {
   }
 })
 
+client.player
+      .on('songAdd',  (queue, song) =>{
+        console.log(`Song ${song} was added to the queue.`)
+      })
+
 
 const oldMessage = []
 
