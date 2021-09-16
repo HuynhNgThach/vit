@@ -132,7 +132,7 @@ async function execute(message, serverQueue) {
   // const songInfo = await ytdl.getInfo(args[1]);
 
     try {
-      let songInfo = await ytdl.getInfo(args[1]);
+      var songInfo = await ytdl.getInfo(args[1]);
     } catch (err) {
       return message.channel.send('...');
     }
