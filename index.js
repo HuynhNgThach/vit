@@ -86,11 +86,10 @@ client.on("message",async (message) => {
       client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       break
     case 'queue': 
-      console.log(guildQueue);
       if(guildQueue && guildQueue.songs) {
         const exampleEmbed = new MessageEmbed()
         .setColor('#e26900')
-        .setTitle(':duck: Curent farm:')
+        .setTitle('Current farm:')
         .setFooter('vit © 2021');
         guildQueue.songs.forEach(song => {
           if(guildQueue.nowPlaying.name === song.name) {
