@@ -76,7 +76,7 @@ client.on("message",async (message) => {
       reply = `:duck: ok skip`
       guildQueue.skip();
       break
-    case 'nowPlay': 
+    case 'nowplay': 
       const ProgressBar = guildQueue.createProgressBar();
       console.log("ProgressBar",ProgressBar)
       reply = ':duck: '+ ProgressBar.prettier
