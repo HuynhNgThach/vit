@@ -98,12 +98,13 @@ client.on("message",async (message) => {
 
 client.player
       .on('songAdd',  (queue, song) =>{
-        console.log(`Song ${song} was added to the queue.`)
-        const exampleEmbed = new MessageEmbed()
+        try {
+          console.log(`Song ${song} was added to the queue.`)
+          const exampleEmbed = new MessageEmbed()
           .setColor('#e26900')
           .setTitle(':duck: Thêm bài hát mới ')
           // .setAuthor('Some name', 'https://i.imgur.com/AfFp7pu.png', 'https://discord.js.org')
-          .setDescription(song.name)
+          .setDescription(song.name + ` | ${song.requestedBy} | ( ${song.duration} )`)
           // .addFields(
           //   { name: 'Regular field title', value: 'Some value here' },
           //   { name: '\u200B', value: '\u200B' },
@@ -114,8 +115,12 @@ client.player
           .setImage(song.thumbnail)
           // .setTimestamp()
           .setFooter('vit@2021');
-        // client.channels.cache.get(textChannelId).send('ehllo')
-        client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
+          // client.channels.cache.get(textChannelId).send('ehllo')
+          client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
+        } catch (error) {
+          console.log("ERROR | ",error)
+        }
+        
       })
 
 
