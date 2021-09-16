@@ -64,15 +64,22 @@ client.on("message",async (message) => {
       break;
     case 'play':
       let queue = client.player.createQueue(message.guild.id);
-        console.log("sdafasdfsadsdadsasadfsadf",args.join(' '))
+        reply = `:duck: đã thêm bài ${args.join(' ')}`
         await queue.join(message.member.voice.channel);
       let song = await queue.play(args.join(' ')).catch(_ => {
           if(!guildQueue)
           queue.stop();
       });
       return;
+    case 'skip':
+      reply = `:duck: ok skip`
+      guildQueue.skip();
+      break
+    case 'nowPlay': 
+      const ProgressBar = guildQueue.createProgressBar();
+      reply = ':duck: '+ ProgressBar.prettier
     default:
-      reply = ':duck: Dm gõ tào lao'
+      reply = ':duck: Dm gõ tào lao vậy'
       break;
   }
   if(reply) {
