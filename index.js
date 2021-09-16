@@ -113,6 +113,7 @@ client.on("message",async (message) => {
         .addField('#nowplay','Thông tin bài nhạc đang trình bày!')
         .addField('#help','Gõ #help nha')
         .setFooter('vit © 2021');
+      client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       break
     default:
       reply = ':duck: Dm gõ tào gì lao vậy'
