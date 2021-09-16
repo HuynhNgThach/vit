@@ -1,7 +1,6 @@
 
 const axios = require('axios').default;
 const cheerio = require('cheerio');
-const { RepeatMode } = require('discord-music-player');
 const from = ['Phương. Nguyễn Ngọc Quỳnh (2)', 'Thạch. Huỳnh Ngọc (3)','Phụng. Tô Hoàng']
 const config = {
     authentication: process.env.msteam_token,
@@ -87,6 +86,7 @@ client.on("message",async (message) => {
           .setImage(song.thumbnail)
           // .setTimestamp()
           .setFooter('vit@2021', 'https://i.imgur.com/AfFp7pu.png');
+        client.channels.cache.get(textChannelId).send('ehllo')
         client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       });
       break
