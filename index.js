@@ -81,7 +81,8 @@ client.on("message",async (message) => {
       const exampleEmbed = new MessageEmbed()
       .setColor('#e26900')
       .setTitle(':duck: Now playing ')
-      .setDescription(guildQueue.nowPlaying + ` | ${ProgressBar.prettier}`)
+      .setDescription(guildQueue.nowPlaying  )
+      .addField('Progress:', `${ProgressBar.prettier}`, true)
       .setFooter('vit@2021');
       client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       break
