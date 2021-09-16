@@ -103,7 +103,16 @@ client.on("message",async (message) => {
       }
       break
     case 'help': 
-      reply = ':duck: | mission | play | skip | nowPlay'
+      const exampleEmbed = new MessageEmbed()
+        .setColor('#e26900')
+        .setTitle('Help:')
+        .addField('#mission','Gõ thử rồi biết!')
+        .addField('#play','Vịt hát 1 bài!')
+        .addField('#skip','Skip bài hiện tại!')
+        .addField('#queue','Queue hiện tại!')
+        .addField('#nowplay','Thông tin bài nhạc đang trình bày!')
+        .addField('#help','Gõ #help nha')
+        .setFooter('vit © 2021');
       break
     default:
       reply = ':duck: Dm gõ tào gì lao vậy'
