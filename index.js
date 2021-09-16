@@ -82,7 +82,7 @@ client.on("message",async (message) => {
       .setColor('#e26900')
       .setTitle(':duck: Now playing:')
       .setDescription(guildQueue.nowPlaying.name)
-      .addField('', `${ProgressBar.prettier}`, true)
+      .addField(' ', `${ProgressBar.prettier}`, true)
       .setFooter('vit © 2021');
       client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       break
