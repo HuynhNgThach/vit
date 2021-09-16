@@ -129,7 +129,14 @@ async function execute(message, serverQueue) {
     );
   }
 
-  const songInfo = await ytdl.getInfo(args[1]);
+  // const songInfo = await ytdl.getInfo(args[1]);
+
+    try {
+      let songInfo = await ytdl.getInfo(args[1]);
+    } catch (err) {
+      return message.channel.send('...');
+    }
+
   console.log("songinfo", songInfo)
   const song = {
         title: songInfo.videoDetails.title,
