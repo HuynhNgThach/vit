@@ -96,32 +96,21 @@ client.on("message",async (message) => {
   }
 })
 
-client.player
-      .on('songAdd',  (queue, song) =>{
-        try {
-          console.log(`Song ${song} was added to the queue.`)
-          const exampleEmbed = new MessageEmbed()
-          .setColor('#e26900')
-          .setTitle(':duck: Added to farm ')
-          // .setAuthor('Some name', 'https://i.imgur.com/AfFp7pu.png', 'https://discord.js.org')
-          .setDescription(song.name + ` | ( ${song.duration} )`)
-          // .addFields(
-          //   { name: 'Regular field title', value: 'Some value here' },
-          //   { name: '\u200B', value: '\u200B' },
-          //   { name: 'Inline field title', value: 'Some value here', inline: true },
-          //   { name: 'Inline field title', value: 'Some value here', inline: true },
-          // )
-          // .addField('Inline field title', 'Some value here', true)
-          .setImage(song.thumbnail)
-          // .setTimestamp()
-          .setFooter('vit@2021');
-          // client.channels.cache.get(textChannelId).send('ehllo')
-          client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
-        } catch (error) {
-          console.log("ERROR | ",error)
-        }
-        
-      })
+
+client.player.on('songAdd',  (queue, song) => {
+  try {
+    console.log(`Song ${song} was added to the queue.`)
+    const exampleEmbed = new MessageEmbed()
+      .setColor('#e26900')
+      .setTitle(':duck: Added to farm ')
+      .setDescription(song.name + ` | ( ${song.duration} )`)
+      .setImage(song.thumbnail)
+      .setFooter(':duck: vit@2021');
+      client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
+    } catch (error) {
+      console.log("ERROR | ",error)
+    }
+})
 
 
 const oldMessage = []
