@@ -104,7 +104,6 @@ client.player
           .setTitle(':duck: Thêm bài hát mới ')
           // .setAuthor('Some name', 'https://i.imgur.com/AfFp7pu.png', 'https://discord.js.org')
           .setDescription(song.name)
-          .setThumbnail('https://images.unsplash.com/photo-1563409236302-8442b5e644df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80')
           // .addFields(
           //   { name: 'Regular field title', value: 'Some value here' },
           //   { name: '\u200B', value: '\u200B' },
@@ -114,7 +113,7 @@ client.player
           // .addField('Inline field title', 'Some value here', true)
           .setImage(song.thumbnail)
           // .setTimestamp()
-          .setFooter('vit@2021', 'https://images.unsplash.com/photo-1563409236302-8442b5e644df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
+          .setFooter('vit@2021');
         // client.channels.cache.get(textChannelId).send('ehllo')
         client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       })
