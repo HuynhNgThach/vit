@@ -86,6 +86,9 @@ client.on("message",async (message) => {
       .setFooter('vit@2021');
       client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       break
+    case 'queue': 
+      console.log(guildQueue);
+      break
     case 'help': 
       reply = ':duck: | mission | play | skip | nowPlay'
       break
