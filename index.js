@@ -18,6 +18,13 @@ const options = {
 
 const { Client, Intents } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+//music bot create
+const { Player } = require("discord-music-player");
+const player = new Player(client, {
+    leaveOnEmpty: false, // This options are optional.
+});
+client.player = player;
+//end music bot create
 const prefix = "#";
 var textChannelId = ''
 
