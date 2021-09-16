@@ -84,7 +84,7 @@ client.on("message",async (message) => {
       .setDescription(guildQueue.nowPlaying.name)
       .addField('Progress:', `${ProgressBar.prettier}`, true)
       .setFooter('vit © 2021');
-      client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
+      client.channels.cache.get(textChannelId).send({ embeds: [mess] })
       break
     case 'queue': 
       if(guildQueue && guildQueue.songs) {
@@ -93,13 +93,13 @@ client.on("message",async (message) => {
         .setFooter('vit © 2021');
         guildQueue.songs.forEach(song => {
           if(guildQueue.nowPlaying.name === song.name) {
-            exampleEmbed.addField('--------',':duck: '+song.name)
+            mess.addField('--------',':duck: '+song.name)
           } else {
-            exampleEmbed.addField('--------',song.name)
+            mess.addField('--------',song.name)
           }
           
         })
-        client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
+        client.channels.cache.get(textChannelId).send({ embeds: [mess] })
       }
       break
     case 'help': 
@@ -112,7 +112,7 @@ client.on("message",async (message) => {
         .addField('#nowplay','Thông tin bài nhạc đang trình bày!')
         .addField('#help','Gõ #help nha')
         .setFooter('vit © 2021');
-      client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
+      client.channels.cache.get(textChannelId).send({ embeds: [mess] })
       break
     default:
       reply = ':duck: Dm gõ tào gì lao vậy'
