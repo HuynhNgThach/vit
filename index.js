@@ -78,6 +78,7 @@ client.on("message",async (message) => {
       break
     case 'nowPlay': 
       const ProgressBar = guildQueue.createProgressBar();
+      console.log("ProgressBar",ProgressBar)
       reply = ':duck: '+ ProgressBar.prettier
       break
     case 'help': 
