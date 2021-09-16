@@ -81,7 +81,6 @@ client.on("message",async (message) => {
       .setColor('#e26900')
       .setTitle(':duck: Now playing:')
       .setDescription(guildQueue.nowPlaying.name)
-      .setDescription('progress')
       .addField('Progress:', `${ProgressBar.prettier}`, true)
       .setFooter('vit © 2021');
       client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
@@ -89,7 +88,14 @@ client.on("message",async (message) => {
     case 'queue': 
       console.log(guildQueue);
       if(guildQueue && guildQueue.songs) {
-
+        const exampleEmbed = new MessageEmbed()
+        .setColor('#e26900')
+        .setTitle(':duck: Curent farm:')
+        .setFooter('vit © 2021');
+        guildQueue.songs.forEach(song => {
+          exampleEmbed.addField('--------',song.name)
+        })
+        client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       }
       break
     case 'help': 
