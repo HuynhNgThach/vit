@@ -93,7 +93,7 @@ client.on("message",async (message) => {
         .setTitle(':duck: Curent farm:')
         .setFooter('vit © 2021');
         guildQueue.songs.forEach(song => {
-          if(song.isLive) {
+          if(guildQueue.nowPlaying.name === song.name) {
             exampleEmbed.addField('--------',':duck: '+song.name)
           } else {
             exampleEmbed.addField('--------',song.name)
