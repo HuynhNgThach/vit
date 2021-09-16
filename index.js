@@ -41,7 +41,7 @@ client.on('error', client => {
   client.channels.cache.get(textChannelId).send(':duck: Quack quack .....! tao sắp đi r, gọi th farmer giúp t');
 })
 
-client.on("message", message => {
+client.on("message",async (message) => {
   if (message.author.bot) return;
   if(!message.content.startsWith(prefix)) return
 
