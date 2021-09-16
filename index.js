@@ -80,8 +80,8 @@ client.on("message",async (message) => {
       const ProgressBar = guildQueue.createProgressBar();
       const exampleEmbed = new MessageEmbed()
       .setColor('#e26900')
-      .setTitle(':duck: Now playing ')
-      .setDescription(guildQueue.nowPlaying  )
+      .setTitle(':duck: Now playing:')
+      .setDescription(guildQueue.nowPlaying.name)
       .addField('Progress:', `${ProgressBar.prettier}`, true)
       .setFooter('vit@2021');
       client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
