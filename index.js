@@ -102,9 +102,9 @@ client.player
           console.log(`Song ${song} was added to the queue.`)
           const exampleEmbed = new MessageEmbed()
           .setColor('#e26900')
-          .setTitle(':duck: Thêm bài hát mới ')
+          .setTitle(':duck: Added to farm ')
           // .setAuthor('Some name', 'https://i.imgur.com/AfFp7pu.png', 'https://discord.js.org')
-          .setDescription(song.name + ` | ${song.requestedBy} | ( ${song.duration} )`)
+          .setDescription(song.name + ` | ( ${song.duration} )`)
           // .addFields(
           //   { name: 'Regular field title', value: 'Some value here' },
           //   { name: '\u200B', value: '\u200B' },
