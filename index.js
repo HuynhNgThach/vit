@@ -71,7 +71,7 @@ client.on("message",async (message) => {
           if(!guildQueue)
           queue.stop();
       });
-      return;
+      break
     case 'skip':
       reply = `:duck: ok skip`
       guildQueue.skip();
