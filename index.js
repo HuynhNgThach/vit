@@ -93,7 +93,12 @@ client.on("message",async (message) => {
         .setTitle(':duck: Curent farm:')
         .setFooter('vit © 2021');
         guildQueue.songs.forEach(song => {
-          exampleEmbed.addField('--------',song.name)
+          if(song.isLive) {
+            exampleEmbed.addField('--------',':duck: '+song.name)
+          } else {
+            exampleEmbed.addField('--------',song.name)
+          }
+          
         })
         client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       }
