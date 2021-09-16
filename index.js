@@ -56,6 +56,7 @@ client.on("message",async (message) => {
   const commandBody = message.content.slice(prefix.length);
   const args = commandBody.split(' ');
   const command = args.shift().toLowerCase();
+  let guildQueue = client.player.getQueue(message.guild.id);
   let reply = ''
 
   switch (command) {
