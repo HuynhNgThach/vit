@@ -77,7 +77,7 @@ client.on("message",async (message) => {
       break
     case 'nowplay': 
       const ProgressBar = guildQueue.createProgressBar();
-      const exampleEmbed = new MessageEmbed()
+      let exampleEmbed = new MessageEmbed()
       .setColor('#e26900')
       .setTitle(':duck: Now playing:')
       .setDescription(guildQueue.nowPlaying.name)
@@ -87,7 +87,7 @@ client.on("message",async (message) => {
       break
     case 'queue': 
       if(guildQueue && guildQueue.songs) {
-        const exampleEmbed = new MessageEmbed()
+        let exampleEmbed = new MessageEmbed()
         .setColor('#e26900')
         .setTitle('Current farm:')
         .setFooter('vit © 2021');
@@ -103,7 +103,7 @@ client.on("message",async (message) => {
       }
       break
     case 'help': 
-      const exampleEmbed = new MessageEmbed()
+      let exampleEmbed = new MessageEmbed()
         .setColor('#e26900')
         .setTitle('Help:')
         .addField('#mission','Gõ thử rồi biết!')
