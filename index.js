@@ -15,7 +15,7 @@ const options = {
 
 
 
-const { Client, Intents } = require('discord.js');
+const { Client, Intents, MessageEmbed  } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES]});
 //music bot create
 const { Player } = require("discord-music-player");
@@ -35,11 +35,13 @@ client.on('ready', client => {
     }
   })
   client.channels.cache.get(textChannelId).send(':duck: Vịt đã online!');
-  try {
-    conitunousGetMessage(config.url)
-  } catch (error) {
-    console.log("ERROR", error)
-  }
+
+  //uncomment
+  // try {
+  //   conitunousGetMessage(config.url)
+  // } catch (error) {
+  //   console.log("ERROR", error)
+  // }
   
   
 })
@@ -64,31 +66,31 @@ client.on("message",async (message) => {
       break;
     case 'play':
       let queue = client.player.createQueue(message.guild.id);
-        
         await queue.join(message.member.voice.channel);
         let song = await queue.play(args.join(' ')).catch(_ => {
-        if(!guildQueue)
-          queue.stop();
-        // reply = `:duck: đã thêm bài ${args.join(' ')}`
-        const exampleEmbed = new MessageEmbed()
-          .setColor('#e26900')
-          .setTitle(':duck: Thêm bài hát mới')
-          // .setAuthor('Some name', 'https://i.imgur.com/AfFp7pu.png', 'https://discord.js.org')
-          .setDescription(song.name)
-          .setThumbnail('https://i.imgur.com/AfFp7pu.png')
-          // .addFields(
-          //   { name: 'Regular field title', value: 'Some value here' },
-          //   { name: '\u200B', value: '\u200B' },
-          //   { name: 'Inline field title', value: 'Some value here', inline: true },
-          //   { name: 'Inline field title', value: 'Some value here', inline: true },
-          // )
-          // .addField('Inline field title', 'Some value here', true)
-          .setImage(song.thumbnail)
-          // .setTimestamp()
-          .setFooter('vit@2021', 'https://i.imgur.com/AfFp7pu.png');
-        client.channels.cache.get(textChannelId).send('ehllo')
-        client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
-      });
+            if(!guildQueue)
+                queue.stop();
+        });
+      // // console.log(song)
+      // // reply = `:duck: đã thêm bài ${args.join(' ')}`
+      // const exampleEmbed = new MessageEmbed()
+      //   .setColor('#e26900')
+      //   .setTitle(':duck: Thêm bài hát mới ' + args.join(' '))
+      //   // .setAuthor('Some name', 'https://i.imgur.com/AfFp7pu.png', 'https://discord.js.org')
+      //   .setDescription("hahaha")
+      //   .setThumbnail('https://i.imgur.com/AfFp7pu.png')
+      //   // .addFields(
+      //   //   { name: 'Regular field title', value: 'Some value here' },
+      //   //   { name: '\u200B', value: '\u200B' },
+      //   //   { name: 'Inline field title', value: 'Some value here', inline: true },
+      //   //   { name: 'Inline field title', value: 'Some value here', inline: true },
+      //   // )
+      //   // .addField('Inline field title', 'Some value here', true)
+      //   // .setImage(song.thumbnail)
+      //   // .setTimestamp()
+      //   .setFooter('vit@2021', 'https://i.imgur.com/AfFp7pu.png');
+      // // client.channels.cache.get(textChannelId).send('ehllo')
+      // // client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       break
     case 'skip':
       reply = `:duck: ok skip`
