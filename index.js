@@ -64,6 +64,7 @@ client.on("message",async (message) => {
       break;
     case 'play':
       let queue = client.player.createQueue(message.guild.id);
+        console.log("sdafasdfsadsdadsasadfsadf",args.join(' '))
         await queue.join(message.member.voice.channel);
       let song = await queue.play(args.join(' ')).catch(_ => {
           if(!guildQueue)
