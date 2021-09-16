@@ -117,6 +117,7 @@ async function execute(message, serverQueue) {
   const args = message.content.split(" ");
 
   const voiceChannel = message.member.voice.channel;
+  console.log("voice channel", voiceChannel)
   if (!voiceChannel)
     return message.channel.send(
       ":duck: mày ở đâu mà đòi tao hát"
