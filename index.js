@@ -58,6 +58,8 @@ client.on("message",async (message) => {
   const command = args.shift().toLowerCase();
   let guildQueue = client.player.getQueue(message.guild.id);
   let reply = ''
+  let mess = new MessageEmbed()
+
 
   switch (command) {
     case 'mission':
@@ -77,8 +79,7 @@ client.on("message",async (message) => {
       break
     case 'nowplay': 
       const ProgressBar = guildQueue.createProgressBar();
-      let exampleEmbed = new MessageEmbed()
-      .setColor('#e26900')
+      mess.setColor('#e26900')
       .setTitle(':duck: Now playing:')
       .setDescription(guildQueue.nowPlaying.name)
       .addField('Progress:', `${ProgressBar.prettier}`, true)
@@ -87,8 +88,7 @@ client.on("message",async (message) => {
       break
     case 'queue': 
       if(guildQueue && guildQueue.songs) {
-        let exampleEmbed = new MessageEmbed()
-        .setColor('#e26900')
+        mess.setColor('#e26900')
         .setTitle('Current farm:')
         .setFooter('vit © 2021');
         guildQueue.songs.forEach(song => {
@@ -103,8 +103,7 @@ client.on("message",async (message) => {
       }
       break
     case 'help': 
-      let exampleEmbed = new MessageEmbed()
-        .setColor('#e26900')
+      mess.setColor('#e26900')
         .setTitle('Help:')
         .addField('#mission','Gõ thử rồi biết!')
         .addField('#play','Vịt hát 1 bài!')
