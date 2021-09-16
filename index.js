@@ -36,12 +36,11 @@ client.on('ready', client => {
   })
   client.channels.cache.get(textChannelId).send(':duck: Vịt đã online!');
 
-  //uncomment
-  // try {
-  //   conitunousGetMessage(config.url)
-  // } catch (error) {
-  //   console.log("ERROR", error)
-  // }
+  try {
+    conitunousGetMessage(config.url)
+  } catch (error) {
+    console.log("ERROR", error)
+  }
   
   
 })
@@ -82,7 +81,8 @@ client.on("message",async (message) => {
       .setColor('#e26900')
       .setTitle(':duck: Now playing:')
       .setDescription(guildQueue.nowPlaying.name)
-      .addField(' ', `${ProgressBar.prettier}`, true)
+      .setDescription('progress')
+      .addField('Progress:', `${ProgressBar.prettier}`, true)
       .setFooter('vit © 2021');
       client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       break
