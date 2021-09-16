@@ -101,7 +101,7 @@ client.player
         console.log(`Song ${song} was added to the queue.`)
         const exampleEmbed = new MessageEmbed()
           .setColor('#e26900')
-          .setTitle(':duck: Thêm bài hát mới ' + args.join(' '))
+          .setTitle(':duck: Thêm bài hát mới ')
           // .setAuthor('Some name', 'https://i.imgur.com/AfFp7pu.png', 'https://discord.js.org')
           .setDescription(song.name)
           .setThumbnail('https://i.imgur.com/AfFp7pu.png')
