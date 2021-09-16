@@ -60,7 +60,7 @@ client.on("message",async (message) => {
 
   switch (command) {
     case 'mission':
-      reply = ':duck: Quack quack...! Tao là vit, con trai đầu lòng thằng Farmer'
+      reply = ':duck: Quack quack...! Tao là vit, ngoài nhắc điểm danh tao còn ca hát được nha ae'
       break;
     case 'play':
       let queue = client.player.createQueue(message.guild.id);
@@ -78,8 +78,11 @@ client.on("message",async (message) => {
     case 'nowPlay': 
       const ProgressBar = guildQueue.createProgressBar();
       reply = ':duck: '+ ProgressBar.prettier
+    case 'help': 
+      reply = ':duck: | mission | play | skip | nowPlay'
+      break
     default:
-      reply = ':duck: Dm gõ tào lao vậy'
+      reply = ':duck: Dm gõ tào gì lao vậy'
       break;
   }
   if(reply) {
