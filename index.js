@@ -71,9 +71,6 @@ client.on("message",async (message) => {
             if(!guildQueue)
                 queue.stop();
         });
-      // // console.log(song)
-      // // reply = `:duck: đã thêm bài ${args.join(' ')}`
-      
       break
     case 'skip':
       reply = `:duck: ok skip`
@@ -81,8 +78,12 @@ client.on("message",async (message) => {
       break
     case 'nowplay': 
       const ProgressBar = guildQueue.createProgressBar();
-      console.log("ProgressBar",ProgressBar)
-      reply = ':duck: '+ ProgressBar.prettier
+      const exampleEmbed = new MessageEmbed()
+      .setColor('#e26900')
+      .setTitle(':duck: Now playing ')
+      .setDescription(guildQueue.nowPlaying + ` | ${ProgressBar.prettier}`)
+      .setFooter('vit@2021');
+      client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
       break
     case 'help': 
       reply = ':duck: | mission | play | skip | nowPlay'
@@ -105,7 +106,7 @@ client.player.on('songAdd',  (queue, song) => {
       .setTitle(':duck: Added to farm ')
       .setDescription(song.name + ` | ( ${song.duration} )`)
       .setImage(song.thumbnail)
-      .setFooter(':duck: vit@2021');
+      .setFooter('vit@2021');
       client.channels.cache.get(textChannelId).send({ embeds: [exampleEmbed] })
     } catch (error) {
       console.log("ERROR | ",error)
