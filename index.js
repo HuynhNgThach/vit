@@ -129,7 +129,7 @@ async function execute(message, serverQueue) {
     );
   }
 
-  const songInfo = await ytdl.getInfo("mơ");
+  const songInfo = await ytdl.getInfo(args[0]);
   console.log("songinfo", songInfo)
   const song = {
         title: songInfo.videoDetails.title,
