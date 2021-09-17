@@ -49,78 +49,83 @@ client.on('error', client => {
 })
 
 client.on("message",async (message) => {
-  if (message.author.bot) return;
-  if(!message.content.startsWith(prefix)) return
+  try {
+    if (message.author.bot) return;
+    if(!message.content.startsWith(prefix)) return
 
 
-  const commandBody = message.content.slice(prefix.length);
-  const args = commandBody.split(' ');
-  const command = args.shift().toLowerCase();
-  let guildQueue = client.player.getQueue(message.guild.id);
-  let reply = ''
-  let mess = new MessageEmbed()
+    const commandBody = message.content.slice(prefix.length);
+    const args = commandBody.split(' ');
+    const command = args.shift().toLowerCase();
+    let guildQueue = client.player.getQueue(message.guild.id);
+    let reply = ''
+    let mess = new MessageEmbed()
 
 
-  switch (command) {
-    case 'mission':
-      reply = ':duck: Quack quack...! Tao là vit, ngoài nhắc điểm danh tao còn ca hát được nha ae'
-      break;
-    case 'play':
-      let queue = client.player.createQueue(message.guild.id);
-        await queue.join(message.member.voice.channel);
-        let song = await queue.play(args.join(' ')).catch(_ => {
-            if(!guildQueue)
-                queue.stop();
-        });
-      break
-    case 'skip':
-      reply = `:duck: ok skip`
-      guildQueue.skip();
-      break
-    case 'nowplay': 
-      const ProgressBar = guildQueue.createProgressBar();
-      mess.setColor('#e26900')
-      .setTitle(':duck: Now playing:')
-      .setDescription(guildQueue.nowPlaying.name)
-      .addField('Progress:', `${ProgressBar.prettier}`, true)
-      .setFooter('vit © 2021');
-      client.channels.cache.get(textChannelId).send({ embeds: [mess] })
-      break
-    case 'queue': 
-      if(guildQueue && guildQueue.songs) {
+    switch (command) {
+      case 'mission':
+        reply = ':duck: Quack quack...! Tao là vit, ngoài nhắc điểm danh tao còn ca hát được nha ae'
+        break;
+      case 'play':
+        let queue = client.player.createQueue(message.guild.id);
+          await queue.join(message.member.voice.channel);
+          let song = await queue.play(args.join(' ')).catch(_ => {
+              if(!guildQueue)
+                  queue.stop();
+          });
+        break
+      case 'skip':
+        reply = `:duck: ok skip`
+        guildQueue.skip();
+        break
+      case 'nowplay': 
+        const ProgressBar = guildQueue.createProgressBar();
         mess.setColor('#e26900')
-        .setTitle('Current farm:')
+        .setTitle(':duck: Now playing:')
+        .setDescription(guildQueue.nowPlaying.name)
+        .addField('Progress:', `${ProgressBar.prettier}`, true)
         .setFooter('vit © 2021');
-        guildQueue.songs.forEach(song => {
-          if(guildQueue.nowPlaying.name === song.name) {
-            mess.addField('--------',':duck: '+song.name)
-          } else {
-            mess.addField('--------',song.name)
-          }
-          
-        })
         client.channels.cache.get(textChannelId).send({ embeds: [mess] })
-      }
-      break
-    case 'help': 
-      mess.setColor('#e26900')
-        .setTitle('Help:')
-        .addField('#mission','Gõ thử rồi biết!')
-        .addField('#play','Vịt hát 1 bài!')
-        .addField('#skip','Skip bài hiện tại!')
-        .addField('#queue','Queue hiện tại!')
-        .addField('#nowplay','Thông tin bài nhạc đang trình bày!')
-        .addField('#help','Gõ #help nha')
-        .setFooter('vit © 2021');
-      client.channels.cache.get(textChannelId).send({ embeds: [mess] })
-      break
-    default:
-      reply = ':duck: Dm gõ tào gì lao vậy'
-      break;
+        break
+      case 'queue': 
+        if(guildQueue && guildQueue.songs) {
+          mess.setColor('#e26900')
+          .setTitle('Current farm:')
+          .setFooter('vit © 2021');
+          guildQueue.songs.forEach(song => {
+            if(guildQueue.nowPlaying.name === song.name) {
+              mess.addField('--------',':duck: '+song.name)
+            } else {
+              mess.addField('--------',song.name)
+            }
+            
+          })
+          client.channels.cache.get(textChannelId).send({ embeds: [mess] })
+        }
+        break
+      case 'help': 
+        mess.setColor('#e26900')
+          .setTitle('Help:')
+          .addField('#mission','Gõ thử rồi biết!')
+          .addField('#play','Vịt hát 1 bài!')
+          .addField('#skip','Skip bài hiện tại!')
+          .addField('#queue','Queue hiện tại!')
+          .addField('#nowplay','Thông tin bài nhạc đang trình bày!')
+          .addField('#help','Gõ #help nha')
+          .setFooter('vit © 2021');
+        client.channels.cache.get(textChannelId).send({ embeds: [mess] })
+        break
+      default:
+        reply = ':duck: Dm gõ tào gì lao vậy'
+        break;
+    }
+    if(reply) {
+      message.reply(reply)
+    }
+  } catch (error) {
+    console.log("ERROR |",error)
   }
-  if(reply) {
-    message.reply(reply)
-  }
+  
 })
 
 
